@@ -305,10 +305,13 @@ class OnePassword:
         """
         Helper function to put a document
 
-        :param filename: path and filename of document (must be saved locally already)
+        :param username: username to be stored
         :type filename: str
 
-        :param title: title you wish to call the document
+        :param password: password to be stored
+        :type password: str
+
+        :param title: title you wish to call the login
         :type title: str
 
         :param vault: vault the document is in (optional, default=Private)
