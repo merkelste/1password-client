@@ -300,7 +300,32 @@ class OnePassword:
             # self.signout()
         # else:
         # self.signout()
+        
+    def create_login(self, username, password, title, vault="Private"):  # pragma: no cover
+        """
+        Helper function to put a document
 
+        :param filename: path and filename of document (must be saved locally already)
+        :type filename: str
+
+        :param title: title you wish to call the document
+        :type title: str
+
+        :param vault: vault the document is in (optional, default=Private)
+        :type vault: str
+
+        """
+        cmd = "op create item login username={} password={} --title={} --vault={}".format(username,password, title, vault)
+        # [--tags=<tags>]
+        response = read_bash_return(cmd)
+        if len(response) == 0:
+            self.signin()
+            read_bash_return(cmd)
+            # self.signout()
+        # else:
+        # self.signout()
+        
+        
     def delete_document(self, title, vault="Private"):  # pragma: no cover
         """
         Helper function to delete a document
