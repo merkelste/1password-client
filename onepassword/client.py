@@ -328,7 +328,32 @@ class OnePassword:
         # else:
         # self.signout()
         
+    def create_item(self, filename, category, vault="Private"):  # pragma: no cover
+        """
+        Helper function to create an item using a template
+
+        :param filename: .json template file to be used
+        :type filename: str
+
+        :param category: category of entry
+        :type category: str
+
+        :param vault: vault the document is in (optional, default=Private)
+        :type vault: str
+
+        """
+        cmd = 'op create item "{}" "$op encode < {}"'.format(category,filename)
         
+        # [--tags=<tags>]
+        response = read_bash_return(cmd)
+        if len(response) == 0:
+            self.signin()
+            read_bash_return(cmd)
+            # self.signout()
+        # else:
+        # self.signout()
+        
+                
     def delete_document(self, title, vault="Private"):  # pragma: no cover
         """
         Helper function to delete a document
