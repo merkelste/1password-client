@@ -331,7 +331,6 @@ class OnePassword:
     def create_device(self, filename, category, vault="Private"):  # pragma: no cover
 
         cmd = 'op create item "{}" "$(op encode < {})"'.format(category,filename)
-        print(cmd)
         # [--tags=<tags>]
         response = read_bash_return(cmd)
         if len(response) == 0:
@@ -340,7 +339,19 @@ class OnePassword:
             # self.signout()
         # else:
         # self.signout()
-                    
+  
+    def run_command(self, command):  # pragma: no cover
+
+        cmd = command
+        # [--tags=<tags>]
+        response = read_bash_return(cmd)
+        if len(response) == 0:
+            self.signin()
+            read_bash_return(cmd)
+            # self.signout()
+        # else:
+        # self.signout()
+                                        
     def delete_document(self, title, vault="Private"):  # pragma: no cover
         """
         Helper function to delete a document
