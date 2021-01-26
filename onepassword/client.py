@@ -306,7 +306,7 @@ class OnePassword:
         Helper function to put a document
 
         :param username: username to be stored
-        :type filename: str
+        :type username: str
 
         :param password: password to be stored
         :type password: str
@@ -328,7 +328,7 @@ class OnePassword:
         # else:
         # self.signout()
         
-    def create_item(self, filename, category, vault="Private"):  # pragma: no cover
+    def create_fromTemplate(self, filename, category, vault="Private"):  # pragma: no cover
         """
         Helper function to create an item using a template
 
