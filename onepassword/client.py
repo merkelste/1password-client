@@ -327,6 +327,19 @@ class OnePassword:
             # self.signout()
         # else:
         # self.signout()
+  
+    def create_device(self, filename, category, vault="Private"):  # pragma: no cover
+
+        cmd = 'op create item "{}" "$op encode < {}"'.format(category,filename)
+        # [--tags=<tags>]
+        response = read_bash_return(cmd)
+        if len(response) == 0:
+            self.signin()
+            read_bash_return(cmd)
+            # self.signout()
+        # else:
+        # self.signout()
+        
         
     def create_fromTemplate(self, filename, category, vault="Private"):  # pragma: no cover
         """
