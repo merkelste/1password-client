@@ -331,6 +331,7 @@ class OnePassword:
     def create_device(self, filename, category, vault="Private"):  # pragma: no cover
 
         cmd = 'op create item "{}" "$(op encode < {})"'.format(category,filename)
+        print(cmd)
         # [--tags=<tags>]
         response = read_bash_return(cmd)
         if len(response) == 0:
